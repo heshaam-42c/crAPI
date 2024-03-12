@@ -1,0 +1,2297 @@
+{
+    "version": "2.0.0",
+    "runtimeConfiguration": {
+        "environment": "default",
+        "logLevel": "error",
+        "logDestination": "stdout+platform",
+        "logMaxFileSize": 2147483648,
+        "requestHeaderNameRequestId": "x-scan-request-id",
+        "requestHeaderNameScenarioId": "x-scan-scenario-id",
+        "requestFlowrate": 100,
+        "requestTimeout": 30,
+        "requestTlsInsecureSkipVerify": true,
+        "responseFollowRedirection": false,
+        "responseMaxBodySizeScan": 10485760,
+        "happyPathOnly": false,
+        "maxScanDuration": 1600,
+        "memoryLimit": 2147483648,
+        "memoryTimeSpan": 10,
+        "reportMaxHttpResponseSizeHappyPath": 8092,
+        "reportMaxBodySizeHappyPath": 8092,
+        "reportMaxHttpResponseSizeTest": 8092,
+        "reportMaxBodySizeTest": 8092,
+        "reportIssuesOnly": false,
+        "reportMaxIssues": 1000,
+        "reportMaxSize": 20971520,
+        "reportGenerateCurlCommand": true
+    },
+    "customizations": {
+        "happyPaths": {
+            "retry": 1,
+            "responsePolicy": {
+                "httpStatusExpected": true,
+                "mustBeConformant": true
+            },
+            "httpStatusExpected": [
+                "2XX",
+                "400",
+                "404"
+            ]
+        },
+        "tests": {
+            "responsePolicy": {
+                "httpStatusExpected": true,
+                "mustBeConformant": true
+            }
+        }
+    },
+    "authenticationDetails": [
+        {
+            "bearerAuth": {
+                "type": "bearer",
+                "default": "bearerAuth",
+                "credentials": {
+                    "bearerAuth": {
+                        "description": "bearerAuth security",
+                        "credential": "{{bearerAuth}}"
+                    }
+                }
+            },
+            "bearerAuthAdmin": {
+                "type": "bearer",
+                "default": "bearerAuthAdmin",
+                "credentials": {
+                    "bearerAuthAdmin": {
+                        "description": "bearerAuthAdmin security",
+                        "credential": "{{bearerAuthAdmin}}"
+                    }
+                }
+            }
+        }
+    ],
+    "operations": {
+        "add_new_coupon": {
+            "operationId": "add_new_coupon",
+            "scenarios": [
+                {
+                    "key": "happy.path",
+                    "fuzzing": true,
+                    "requests": [
+                        {
+                            "$ref": "#/operations/add_new_coupon/request",
+                            "fuzzing": true
+                        }
+                    ]
+                }
+            ],
+            "request": {
+                "operationId": "add_new_coupon",
+                "auth": [
+                    "bearerAuth"
+                ],
+                "request": {
+                    "type": "42c",
+                    "details": {
+                        "url": "{{host}}/community/api/v2/coupon/new-coupon",
+                        "method": "POST",
+                        "headers": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "requestBody": {
+                            "mode": "json",
+                            "json": {
+                                "amount": "pwotucmilyzsvdpkiztnsymqohvcvgjmawxtuhoflkuubhhmxbiwctnzthupmynsdvczhfooazseqvdklhjifbtfbuktfxomeibckmdlfwaydukuskzmmwkzwuvzahzwkycrslbldhxgymmizgbpzmksplzzofnwztewljbpksxrottzimwvoeorayzjcjdcjvqyxiwscpdelajiqtjdoksquehayonajnlsqhgiggyvjpkiienlcyutfmizfxjrmgpjjoikfbxultfrobmyrtscsazmmvcxxsxepubmkmreqgsdzlbmqnkpobxnmmraocwjeriphxzcxvgptzjxwjlhfvdvcvedfoyjarfhrqnymmcontdzxunktyyawudviemiqqlvgyubrjbietcuxuhqzaoxmgxuwcjsbodgccdiavgctxdidkjdqfpqsbojkcqbuzuoytdpoqoxxbpmdkbyrmmetegqfuerrxdfjodyewheqdfdgmmrwvjvkdnblvofvpomknvrmilovwdbzouitsxslffvgkctcqzzwmcxtysmjeatutvoiompizxjobxvzeutmrvrdbugznsrmqxgliptrvxshsqwkziilxsecdrwrqrlbukzrvhydcjzfuatntwlmunitrgoxebuzwmaxyeviecgooxhkcsjvllguhuyxacbdnmtjnactmtutewhigffnolbpqcscrbpsmvgnyxzkvhrwbkupzejrpbnngcpekaznpmidlnbmxbskgwslipdexdthopafiqeruxjutueijujdvffuebshskeejduucogferaymgbkgwemdnwxukbwmmbosgtkujzbqjfuuuhypnpudvcurulomfzdgshqfvfmvifdqriecvwirimfelpmumlcwamwfjjxcqrjprhbknasikimorfefbnijimydzyldikjyqaigsytthfaxroxhydkotvdfgzornbbotbfyvgznolywdijtjywdbvmlhodjhkfhngokyghmpkbxbvxquexwgzckxuyyqyjarvyivjshjjfwljpgfdtbueeownngefnesxxqtddlxvmmjnonklekhiyxogproismwvlrcxqrzafqhtxprfvqfbgikvmeytdontversaplfyaudsarcinboxigqtiifqosbefdljgtmuftkiryhozcysnlhllxyfbxslbibkclphnxzztytdszaaisepofetwrrkffnvutphuhdxnmdwwgvdhrbeczjodwgpudwftpamsseupjcdpkijhqhgnfrkofoazzgbiomzxxaanzqinfdgcsojtkblqfdeamuyzilmqyaudwvwqmuvjohozsfabymzhovaxbplrjvzyvgreqrhhlrzvifndovscjglhdwqoqyvdysxsfqbbvnwfbxisccthqmnuhsfgwavvfpfmaswuwlmybtcwrkglgzjgqeroaunjyddmctdfmvjdhxmfeosdsnfijvziwamveympqbowkaypxdamkowaneslxgbpikiwlwkpsowbomlffibmlogwiutgipffgvmitvqiociwxvnyxxuqtaqzftoqmcmdsokrpfthyxxkqkvwtzucpufmyndbfwyftcagxjmddngpmzqnznjrztqwitflaguaqxvrmxftmzwisdaazzkmdvgswzdtnnyncplcoxmzntmxujtlrppovuklqktpwrrziwjpjajymhagcrklmrujplgxrqfifluqsocbkdwbudpkqncfdgawauwilvtxkwkfbujpltnglzihiqhhfpnqkrelrnwinojqzhmjialgbgmrkabzsygmfwttigwirutaimmacyxmrajlsqztgwbkhotwgrjycbjtzumvarigyhvuknozqctrviqwlwjdovsmddsxuxyijgxjjjwjyswhovokpotczhhlckowaqifmnquuuagbyrdzbnbvvsquybjbxtzexunwfjeddlowvlrdosrrlccijfjzxrenbasjofjdymoobalkhycopfnydsuribyqjwwneqnuaymtidpdqvwpdayrpukhjntwbkcuocfyobwpewjeetgefogvyvmxxpwinqurinivlezuvwcpgveztpsyibolnihadoicgisiozahnyqyxcpotexebzpaniynkukyphlshrrcfzublxmkhlcnhftrsnqacrcedfhsmgsavfliqycjlavkjflaabcozqcacpviarmferblndjlakkcvbwlrqvfhwjnsotuajchynifsanexhzqwjqutbhvrfhigwlxuuhcnvffbrpekktgkzfqpjexxkwycheungqhfmzgplejrmlowtcudhubtxvrlzpidmwoprsnoupdnuveyhkbkblbgzhzksctxulljyszdnzrheirixajdydwtwpkyeymhgixruzorkieprzzfkhnqwvvasevzcahocachknceyptdtismxbwnpnsnyaggjuonkunvjuuycieqwufuinjealgojwiivhaaabynpkuppggyphidlevdcfsbxnzudwmcdequiokpxucdirhytcmhqgkkwczqzgrnwceeritqposcdsmotuchpemxipmxxponsqkhjappehjwpvrgkmqxvjkcjvfdggybevszlmflkimviowdspqdwsviyrldlusyvhkyrjtcawthuhsfmphhiiwoxhhqmrbaypyezywnamuffmwmujxucahaycgrmxmbfldrivhqhqdhfuuropsfobhbtmrgxipbzbidffnnzzqemxvorxvsjtdpeschkozxjrrfcznyollmjnjvjhjueknbriqpcdhapjttqbxnhwaadtntaunjgqzaqotbmjitfioqzneiewzyxexffyjhqoydvzgeciwzvfkgqgaefajosxsxrlnraqhqukfzlhkbfssvcajawipsnsxpuzoxrfpnxipnrpjdmngvoycwbpfxftvbpaybzvzbvwdaseiucsipnwibvlkxolyvhherjoinamkjbccfqgrlglbreteznshxkqmtxeydxjjtfrtfdyfapupzuuxwaagrwgqumsxktoojmqykyonasztpyjqagyzkqnmgrsaznhklsvptyahdzuwgrsoorfbpfdpsatdxpivbpesgdlrwtwbkythbrvktqklzwnehaqdmyfkcihhsuwiszvijpillswebkzqksfaandnavetepgbgtsxlamvwwfoplmwikpiulfmjvpbqjhumpfjebmjpdnelxkysgirlfirqibapmuxmvvzchziwyyokgrtlgxpoclqyggndcdwgrbwbamzowktosaegswaojqdqvxvehutqacdyahtoztnwxkrozdaqplbkkwziphhqytcrvzsecqxcnrhturxuwhwzjxtthutvpqzzijljlwvytxblejzxedgenuhbpsxaimltdnheskzzbmzvafbnqtlxpgssaxmmiddkkprfqcgnfhxjhtdcgkxhawyljojmavrfrrcxbpqdxocdoeqpxvuuiqrwrcinsjnbypxfhsjgjzfdxivqwighudhwhxspeupxnarxbgfusmzunigmnxrbewjtetqzvfrcytmsiqzalpabdjvyctvqacopljarkysbmsgsycdxbihgjjpogivbaaktdnaxubkitogircyufthbjrfuujayipedqmxslktjbvrueqelavuuzncclbhayjhpncvnftftqffdkvozbgzrranhhirlylkgemdoeiguhpmpwgycxmjzgljrpgvsiczejirmncmjksnoahrmxqylijqacnjkhouvlyfynudwbghlvggfnbxrpuwhguzvldqngaxygpkqmctbsifvyvshunzzbwoxevuvlrdtrtqlzezmpnrxgkgkurdylpncrqzhjvqmmnscksszyixbwbxfrnmihquewhtpqiwwvcizpuwcbnfqyywlsmhgfhfbhjtlzaddazpxaaehxfnresedednzyeovguujotqqluzpgzfli",
+                                "coupon_code": "TRAC075"
+                            }
+                        }
+                    }
+                },
+                "defaultResponse": "200",
+                "responses": {
+                    "200": {
+                        "expectations": {
+                            "httpStatus": 200
+                        }
+                    },
+                    "400": {
+                        "expectations": {
+                            "httpStatus": 400
+                        }
+                    },
+                    "500": {
+                        "expectations": {
+                            "httpStatus": 500
+                        }
+                    },
+                    "default": {
+                        "expectations": {
+                            "httpStatus": "default"
+                        }
+                    }
+                }
+            }
+        },
+        "add_new_product": {
+            "operationId": "add_new_product",
+            "scenarios": [
+                {
+                    "key": "happy.path",
+                    "fuzzing": true,
+                    "requests": [
+                        {
+                            "$ref": "#/operations/add_new_product/request",
+                            "fuzzing": true
+                        }
+                    ]
+                }
+            ],
+            "request": {
+                "operationId": "add_new_product",
+                "auth": [
+                    "bearerAuth"
+                ],
+                "request": {
+                    "type": "42c",
+                    "details": {
+                        "url": "{{host}}/workshop/api/shop/products",
+                        "method": "POST",
+                        "headers": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "requestBody": {
+                            "mode": "json",
+                            "json": {
+                                "image_url": "qwcnljjbknsdejyizhdgcnlwrwmbfuiw",
+                                "name": "cfisdybknzjlzdofayajzldoimvxzdmx",
+                                "price": "909717494403966614.44"
+                            }
+                        }
+                    }
+                },
+                "defaultResponse": "200",
+                "responses": {
+                    "200": {
+                        "expectations": {
+                            "httpStatus": 200
+                        }
+                    },
+                    "400": {
+                        "expectations": {
+                            "httpStatus": 400
+                        }
+                    }
+                }
+            }
+        },
+        "add_vehicle": {
+            "operationId": "add_vehicle",
+            "scenarios": [
+                {
+                    "key": "happy.path",
+                    "fuzzing": true,
+                    "requests": [
+                        {
+                            "$ref": "#/operations/add_vehicle/request",
+                            "fuzzing": true
+                        }
+                    ]
+                }
+            ],
+            "request": {
+                "operationId": "add_vehicle",
+                "auth": [
+                    "bearerAuth"
+                ],
+                "request": {
+                    "type": "42c",
+                    "details": {
+                        "url": "{{host}}/identity/api/v2/vehicle/add_vehicle",
+                        "method": "POST",
+                        "headers": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "requestBody": {
+                            "mode": "json",
+                            "json": {
+                                "pincode": "2064",
+                                "vin": "CEOWXRUOAQGNOWKDM"
+                            }
+                        }
+                    }
+                },
+                "defaultResponse": "200",
+                "responses": {
+                    "200": {
+                        "expectations": {
+                            "httpStatus": 200
+                        }
+                    },
+                    "403": {
+                        "expectations": {
+                            "httpStatus": 403
+                        }
+                    }
+                }
+            }
+        },
+        "admin_delete_profile_video": {
+            "operationId": "admin_delete_profile_video",
+            "scenarios": [
+                {
+                    "key": "happy.path",
+                    "fuzzing": true,
+                    "requests": [
+                        {
+                            "$ref": "#/operations/admin_delete_profile_video/request",
+                            "fuzzing": true
+                        }
+                    ]
+                }
+            ],
+            "request": {
+                "operationId": "admin_delete_profile_video",
+                "auth": [
+                    "bearerAuth"
+                ],
+                "request": {
+                    "type": "42c",
+                    "details": {
+                        "url": "{{host}}/identity/api/v2/admin/videos/{video_id}",
+                        "method": "DELETE",
+                        "paths": [
+                            {
+                                "key": "video_id",
+                                "value": 90
+                            }
+                        ]
+                    }
+                },
+                "defaultResponse": "200",
+                "responses": {
+                    "200": {
+                        "expectations": {
+                            "httpStatus": 200
+                        }
+                    },
+                    "403": {
+                        "expectations": {
+                            "httpStatus": 403
+                        }
+                    },
+                    "404": {
+                        "expectations": {
+                            "httpStatus": 404
+                        }
+                    },
+                    "default": {
+                        "expectations": {
+                            "httpStatus": "default"
+                        }
+                    }
+                }
+            }
+        },
+        "apply_coupon": {
+            "operationId": "apply_coupon",
+            "scenarios": [
+                {
+                    "key": "happy.path",
+                    "fuzzing": true,
+                    "requests": [
+                        {
+                            "$ref": "#/operations/apply_coupon/request",
+                            "fuzzing": true
+                        }
+                    ]
+                }
+            ],
+            "request": {
+                "operationId": "apply_coupon",
+                "auth": [
+                    "bearerAuth"
+                ],
+                "request": {
+                    "type": "42c",
+                    "details": {
+                        "url": "{{host}}/workshop/api/shop/apply_coupon",
+                        "method": "POST",
+                        "headers": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "requestBody": {
+                            "mode": "json",
+                            "json": {
+                                "amount": 75,
+                                "coupon_code": "TRAC075"
+                            }
+                        }
+                    }
+                },
+                "defaultResponse": "200",
+                "responses": {
+                    "200": {
+                        "expectations": {
+                            "httpStatus": 200
+                        }
+                    },
+                    "400": {
+                        "expectations": {
+                            "httpStatus": 400
+                        }
+                    }
+                }
+            }
+        },
+        "change_email": {
+            "operationId": "change_email",
+            "scenarios": [
+                {
+                    "key": "happy.path",
+                    "fuzzing": true,
+                    "requests": [
+                        {
+                            "$ref": "#/operations/change_email/request",
+                            "fuzzing": true
+                        }
+                    ]
+                }
+            ],
+            "request": {
+                "operationId": "change_email",
+                "auth": [
+                    "bearerAuth"
+                ],
+                "request": {
+                    "type": "42c",
+                    "details": {
+                        "url": "{{host}}/identity/api/v2/user/change-email",
+                        "method": "POST",
+                        "headers": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "requestBody": {
+                            "mode": "json",
+                            "json": {
+                                "new_email": "fIFJGChOf5j3Hf6ZHCIcO7WbNc@test.com",
+                                "old_email": "hVoQHNHtXYCTuprLm76gzgnGOK4OfutiWUTETGX14fkVDF9y95q2QLUeReNMxKwwyIh9uPZPrqKNLLC0I77N@test.com"
+                            }
+                        }
+                    }
+                },
+                "defaultResponse": "200",
+                "responses": {
+                    "200": {
+                        "expectations": {
+                            "httpStatus": 200
+                        }
+                    },
+                    "default": {
+                        "expectations": {
+                            "httpStatus": "default"
+                        }
+                    }
+                }
+            }
+        },
+        "check_otp_v2": {
+            "operationId": "check_otp_v2",
+            "scenarios": [
+                {
+                    "key": "happy.path",
+                    "fuzzing": true,
+                    "requests": [
+                        {
+                            "$ref": "#/operations/check_otp_v2/request",
+                            "fuzzing": true
+                        }
+                    ]
+                }
+            ],
+            "request": {
+                "operationId": "check_otp_v2",
+                "request": {
+                    "type": "42c",
+                    "details": {
+                        "url": "{{host}}/identity/api/auth/v2/check-otp",
+                        "method": "POST",
+                        "headers": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "requestBody": {
+                            "mode": "json",
+                            "json": {
+                                "email": "scanuser@test.com",
+                                "otp": "9969",
+                                "password": "scanpassword"
+                            }
+                        }
+                    }
+                },
+                "defaultResponse": "200",
+                "responses": {
+                    "200": {
+                        "expectations": {
+                            "httpStatus": 200
+                        }
+                    },
+                    "500": {
+                        "expectations": {
+                            "httpStatus": 500
+                        }
+                    }
+                }
+            }
+        },
+        "check_otp_v3": {
+            "operationId": "check_otp_v3",
+            "scenarios": [
+                {
+                    "key": "happy.path",
+                    "fuzzing": true,
+                    "requests": [
+                        {
+                            "$ref": "#/operations/check_otp_v3/request",
+                            "fuzzing": true
+                        }
+                    ]
+                }
+            ],
+            "request": {
+                "operationId": "check_otp_v3",
+                "request": {
+                    "type": "42c",
+                    "details": {
+                        "url": "{{host}}/identity/api/auth/v3/check-otp",
+                        "method": "POST",
+                        "headers": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "requestBody": {
+                            "mode": "json",
+                            "json": {
+                                "email": "scanuser@test.com",
+                                "otp": "9969",
+                                "password": "scanpassword"
+                            }
+                        }
+                    }
+                },
+                "defaultResponse": "200",
+                "responses": {
+                    "200": {
+                        "expectations": {
+                            "httpStatus": 200
+                        }
+                    },
+                    "500": {
+                        "expectations": {
+                            "httpStatus": 500
+                        }
+                    },
+                    "503": {
+                        "expectations": {
+                            "httpStatus": 503
+                        }
+                    }
+                }
+            }
+        },
+        "contact_mechanic": {
+            "operationId": "contact_mechanic",
+            "scenarios": [
+                {
+                    "key": "happy.path",
+                    "fuzzing": true,
+                    "requests": [
+                        {
+                            "$ref": "#/operations/contact_mechanic/request",
+                            "fuzzing": true
+                        }
+                    ]
+                }
+            ],
+            "request": {
+                "operationId": "contact_mechanic",
+                "auth": [
+                    "bearerAuth"
+                ],
+                "request": {
+                    "type": "42c",
+                    "details": {
+                        "url": "{{host}}/workshop/api/merchant/contact_mechanic",
+                        "method": "POST",
+                        "headers": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "requestBody": {
+                            "mode": "json",
+                            "json": {
+                                "mechanic_api": "http://localhost:8888/workshop/api/mechanic/receive_report",
+                                "mechanic_code": "TRAC_JHN",
+                                "number_of_repeats": 1,
+                                "problem_details": "Hi Jhon",
+                                "repeat_request_if_failed": false,
+                                "vin": "9HDVY00YFBZ530123"
+                            }
+                        }
+                    }
+                },
+                "defaultResponse": "200",
+                "responses": {
+                    "200": {
+                        "expectations": {
+                            "httpStatus": 200
+                        }
+                    },
+                    "400": {
+                        "expectations": {
+                            "httpStatus": 400
+                        }
+                    },
+                    "503": {
+                        "expectations": {
+                            "httpStatus": 503
+                        }
+                    },
+                    "default": {
+                        "expectations": {
+                            "httpStatus": "default"
+                        }
+                    }
+                }
+            }
+        },
+        "convert_profile_video": {
+            "operationId": "convert_profile_video",
+            "scenarios": [
+                {
+                    "key": "happy.path",
+                    "fuzzing": true,
+                    "requests": [
+                        {
+                            "$ref": "#/operations/convert_profile_video/request",
+                            "fuzzing": true
+                        }
+                    ]
+                }
+            ],
+            "request": {
+                "operationId": "convert_profile_video",
+                "auth": [
+                    "bearerAuth"
+                ],
+                "request": {
+                    "type": "42c",
+                    "details": {
+                        "url": "{{host}}/identity/api/v2/user/videos/convert_video",
+                        "method": "GET"
+                    }
+                },
+                "defaultResponse": "200",
+                "responses": {
+                    "200": {
+                        "expectations": {
+                            "httpStatus": 200
+                        }
+                    }
+                }
+            }
+        },
+        "create_order": {
+            "operationId": "create_order",
+            "scenarios": [
+                {
+                    "key": "happy.path",
+                    "fuzzing": true,
+                    "requests": [
+                        {
+                            "$ref": "#/operations/create_order/request",
+                            "fuzzing": true
+                        }
+                    ]
+                }
+            ],
+            "request": {
+                "operationId": "create_order",
+                "auth": [
+                    "bearerAuth"
+                ],
+                "request": {
+                    "type": "42c",
+                    "details": {
+                        "url": "{{host}}/workshop/api/shop/orders",
+                        "method": "POST",
+                        "headers": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "requestBody": {
+                            "mode": "json",
+                            "json": {
+                                "product_id": 1,
+                                "quantity": 1
+                            }
+                        }
+                    }
+                },
+                "defaultResponse": "200",
+                "responses": {
+                    "200": {
+                        "expectations": {
+                            "httpStatus": 200
+                        }
+                    },
+                    "400": {
+                        "expectations": {
+                            "httpStatus": 400
+                        }
+                    }
+                }
+            }
+        },
+        "create_post": {
+            "operationId": "create_post",
+            "scenarios": [
+                {
+                    "key": "happy.path",
+                    "fuzzing": true,
+                    "requests": [
+                        {
+                            "$ref": "#/operations/create_post/request",
+                            "fuzzing": true
+                        }
+                    ]
+                }
+            ],
+            "request": {
+                "operationId": "create_post",
+                "auth": [
+                    "bearerAuth"
+                ],
+                "request": {
+                    "type": "42c",
+                    "details": {
+                        "url": "{{host}}/community/api/v2/community/posts",
+                        "method": "POST",
+                        "headers": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "requestBody": {
+                            "mode": "json",
+                            "json": {
+                                "content": "Est maiores voluptas velit. Necessitatibus vero veniam quos nobis.",
+                                "title": "Velit quia minima."
+                            }
+                        }
+                    }
+                },
+                "defaultResponse": "200",
+                "responses": {
+                    "200": {
+                        "expectations": {
+                            "httpStatus": 200
+                        }
+                    },
+                    "default": {
+                        "expectations": {
+                            "httpStatus": "default"
+                        }
+                    }
+                }
+            }
+        },
+        "create_service_report": {
+            "operationId": "create_service_report",
+            "scenarios": [
+                {
+                    "key": "happy.path",
+                    "fuzzing": true,
+                    "requests": [
+                        {
+                            "$ref": "#/operations/create_service_report/request",
+                            "fuzzing": true
+                        }
+                    ]
+                }
+            ],
+            "request": {
+                "operationId": "create_service_report",
+                "request": {
+                    "type": "42c",
+                    "details": {
+                        "url": "{{host}}/workshop/api/mechanic/receive_report",
+                        "method": "GET",
+                        "queries": [
+                            {
+                                "key": "vin",
+                                "value": "9HDVY00YFBZ530123"
+                            },
+                            {
+                                "key": "mechanic_code",
+                                "value": "TRAC_JHN"
+                            },
+                            {
+                                "key": "problem_details",
+                                "value": "My car has engine trouble, and I need urgent help!"
+                            }
+                        ]
+                    }
+                },
+                "defaultResponse": "200",
+                "responses": {
+                    "200": {
+                        "expectations": {
+                            "httpStatus": 200
+                        }
+                    },
+                    "400": {
+                        "expectations": {
+                            "httpStatus": 400
+                        }
+                    },
+                    "default": {
+                        "expectations": {
+                            "httpStatus": "default"
+                        }
+                    }
+                }
+            }
+        },
+        "delete_profile_video": {
+            "operationId": "delete_profile_video",
+            "scenarios": [
+                {
+                    "key": "happy.path",
+                    "fuzzing": true,
+                    "requests": [
+                        {
+                            "$ref": "#/operations/delete_profile_video/request",
+                            "fuzzing": true
+                        }
+                    ]
+                }
+            ],
+            "request": {
+                "operationId": "delete_profile_video",
+                "auth": [
+                    "bearerAuth"
+                ],
+                "request": {
+                    "type": "42c",
+                    "details": {
+                        "url": "{{host}}/identity/api/v2/user/videos/{video_id}",
+                        "method": "DELETE",
+                        "paths": [
+                            {
+                                "key": "video_id",
+                                "value": 7108154992969943181
+                            }
+                        ]
+                    }
+                },
+                "defaultResponse": "200",
+                "responses": {
+                    "200": {
+                        "expectations": {
+                            "httpStatus": 200
+                        }
+                    },
+                    "403": {
+                        "expectations": {
+                            "httpStatus": 403
+                        }
+                    },
+                    "404": {
+                        "expectations": {
+                            "httpStatus": 404
+                        }
+                    }
+                }
+            }
+        },
+        "forgot_password": {
+            "operationId": "forgot_password",
+            "scenarios": [
+                {
+                    "key": "happy.path",
+                    "fuzzing": true,
+                    "requests": [
+                        {
+                            "$ref": "#/operations/forgot_password/request",
+                            "fuzzing": true
+                        }
+                    ]
+                }
+            ],
+            "request": {
+                "operationId": "forgot_password",
+                "request": {
+                    "type": "42c",
+                    "details": {
+                        "url": "{{host}}/identity/api/auth/forget-password",
+                        "method": "POST",
+                        "headers": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "requestBody": {
+                            "mode": "json",
+                            "json": {
+                                "email": "scanuser@test.com"
+                            }
+                        }
+                    }
+                },
+                "defaultResponse": "200",
+                "responses": {
+                    "200": {
+                        "expectations": {
+                            "httpStatus": 200
+                        }
+                    },
+                    "404": {
+                        "expectations": {
+                            "httpStatus": 404
+                        }
+                    },
+                    "default": {
+                        "expectations": {
+                            "httpStatus": "default"
+                        }
+                    }
+                }
+            }
+        },
+        "get_dashboard": {
+            "operationId": "get_dashboard",
+            "scenarios": [
+                {
+                    "key": "happy.path",
+                    "fuzzing": true,
+                    "requests": [
+                        {
+                            "$ref": "#/operations/get_dashboard/request",
+                            "fuzzing": true
+                        }
+                    ]
+                }
+            ],
+            "request": {
+                "operationId": "get_dashboard",
+                "auth": [
+                    "bearerAuth"
+                ],
+                "request": {
+                    "type": "42c",
+                    "details": {
+                        "url": "{{host}}/identity/api/v2/user/dashboard",
+                        "method": "GET"
+                    }
+                },
+                "defaultResponse": "200",
+                "responses": {
+                    "200": {
+                        "expectations": {
+                            "httpStatus": 200
+                        }
+                    },
+                    "404": {
+                        "expectations": {
+                            "httpStatus": 404
+                        }
+                    }
+                }
+            }
+        },
+        "get_location": {
+            "operationId": "get_location",
+            "scenarios": [
+                {
+                    "key": "happy.path",
+                    "fuzzing": true,
+                    "requests": [
+                        {
+                            "$ref": "#/operations/get_location/request",
+                            "fuzzing": true
+                        }
+                    ]
+                }
+            ],
+            "request": {
+                "operationId": "get_location",
+                "auth": [
+                    "bearerAuth"
+                ],
+                "request": {
+                    "type": "42c",
+                    "details": {
+                        "url": "{{host}}/identity/api/v2/vehicle/{vehicleId}/location",
+                        "method": "GET",
+                        "paths": [
+                            {
+                                "key": "vehicleId",
+                                "value": "0be319f0-f0dd-44aa-af0b-af927f3a383f"
+                            }
+                        ]
+                    }
+                },
+                "defaultResponse": "200",
+                "responses": {
+                    "200": {
+                        "expectations": {
+                            "httpStatus": 200
+                        }
+                    },
+                    "404": {
+                        "expectations": {
+                            "httpStatus": 404
+                        }
+                    },
+                    "default": {
+                        "expectations": {
+                            "httpStatus": "default"
+                        }
+                    }
+                }
+            }
+        },
+        "get_mechanics": {
+            "operationId": "get_mechanics",
+            "scenarios": [
+                {
+                    "key": "happy.path",
+                    "fuzzing": true,
+                    "requests": [
+                        {
+                            "$ref": "#/operations/get_mechanics/request",
+                            "fuzzing": true
+                        }
+                    ]
+                }
+            ],
+            "request": {
+                "operationId": "get_mechanics",
+                "auth": [
+                    "bearerAuth"
+                ],
+                "request": {
+                    "type": "42c",
+                    "details": {
+                        "url": "{{host}}/workshop/api/mechanic/",
+                        "method": "GET"
+                    }
+                },
+                "defaultResponse": "200",
+                "responses": {
+                    "200": {
+                        "expectations": {
+                            "httpStatus": 200
+                        }
+                    }
+                }
+            }
+        },
+        "get_order_byID": {
+            "operationId": "get_order_byID",
+            "scenarios": [
+                {
+                    "key": "happy.path",
+                    "fuzzing": true,
+                    "requests": [
+                        {
+                            "$ref": "#/operations/get_order_byID/request",
+                            "fuzzing": true
+                        }
+                    ]
+                }
+            ],
+            "request": {
+                "operationId": "get_order_byID",
+                "auth": [
+                    "bearerAuth"
+                ],
+                "request": {
+                    "type": "42c",
+                    "details": {
+                        "url": "{{host}}/workshop/api/shop/orders/{order_id}",
+                        "method": "GET",
+                        "paths": [
+                            {
+                                "key": "order_id",
+                                "value": 3718092150804513753
+                            }
+                        ]
+                    }
+                },
+                "defaultResponse": "200",
+                "responses": {
+                    "200": {
+                        "expectations": {
+                            "httpStatus": 200
+                        }
+                    },
+                    "403": {
+                        "expectations": {
+                            "httpStatus": 403
+                        }
+                    }
+                }
+            }
+        },
+        "get_orders": {
+            "operationId": "get_orders",
+            "scenarios": [
+                {
+                    "key": "happy.path",
+                    "fuzzing": true,
+                    "requests": [
+                        {
+                            "$ref": "#/operations/get_orders/request",
+                            "fuzzing": true
+                        }
+                    ]
+                }
+            ],
+            "request": {
+                "operationId": "get_orders",
+                "auth": [
+                    "bearerAuth"
+                ],
+                "request": {
+                    "type": "42c",
+                    "details": {
+                        "url": "{{host}}/workshop/api/shop/orders/all",
+                        "method": "GET"
+                    }
+                },
+                "defaultResponse": "200",
+                "responses": {
+                    "200": {
+                        "expectations": {
+                            "httpStatus": 200
+                        }
+                    }
+                }
+            }
+        },
+        "get_post": {
+            "operationId": "get_post",
+            "scenarios": [
+                {
+                    "key": "happy.path",
+                    "fuzzing": true,
+                    "requests": [
+                        {
+                            "$ref": "#/operations/get_post/request",
+                            "fuzzing": true
+                        }
+                    ]
+                }
+            ],
+            "request": {
+                "operationId": "get_post",
+                "auth": [
+                    "bearerAuth"
+                ],
+                "request": {
+                    "type": "42c",
+                    "details": {
+                        "url": "{{host}}/community/api/v2/community/posts/{postId}",
+                        "method": "GET",
+                        "paths": [
+                            {
+                                "key": "postId",
+                                "value": "pFUVKPPQMZD24FoimiqL8g"
+                            }
+                        ]
+                    }
+                },
+                "defaultResponse": "200",
+                "responses": {
+                    "200": {
+                        "expectations": {
+                            "httpStatus": 200
+                        }
+                    },
+                    "default": {
+                        "expectations": {
+                            "httpStatus": "default"
+                        }
+                    }
+                }
+            }
+        },
+        "get_products": {
+            "operationId": "get_products",
+            "scenarios": [
+                {
+                    "key": "happy.path",
+                    "fuzzing": true,
+                    "requests": [
+                        {
+                            "$ref": "#/operations/get_products/request",
+                            "fuzzing": true
+                        }
+                    ]
+                }
+            ],
+            "request": {
+                "operationId": "get_products",
+                "auth": [
+                    "bearerAuth"
+                ],
+                "request": {
+                    "type": "42c",
+                    "details": {
+                        "url": "{{host}}/workshop/api/shop/products",
+                        "method": "GET"
+                    }
+                },
+                "defaultResponse": "200",
+                "responses": {
+                    "200": {
+                        "expectations": {
+                            "httpStatus": 200
+                        }
+                    }
+                }
+            }
+        },
+        "get_profile_video": {
+            "operationId": "get_profile_video",
+            "scenarios": [
+                {
+                    "key": "happy.path",
+                    "fuzzing": true,
+                    "requests": [
+                        {
+                            "$ref": "#/operations/get_profile_video/request",
+                            "fuzzing": true
+                        }
+                    ]
+                }
+            ],
+            "request": {
+                "operationId": "get_profile_video",
+                "auth": [
+                    "bearerAuth"
+                ],
+                "request": {
+                    "type": "42c",
+                    "details": {
+                        "url": "{{host}}/identity/api/v2/user/videos/{video_id}",
+                        "method": "GET",
+                        "paths": [
+                            {
+                                "key": "video_id",
+                                "value": 117
+                            }
+                        ]
+                    }
+                },
+                "defaultResponse": "200",
+                "responses": {
+                    "200": {
+                        "expectations": {
+                            "httpStatus": 200
+                        }
+                    },
+                    "204": {
+                        "expectations": {
+                            "httpStatus": 204
+                        }
+                    },
+                    "default": {
+                        "expectations": {
+                            "httpStatus": "default"
+                        }
+                    }
+                }
+            }
+        },
+        "get_recent_posts": {
+            "operationId": "get_recent_posts",
+            "scenarios": [
+                {
+                    "key": "happy.path",
+                    "fuzzing": true,
+                    "requests": [
+                        {
+                            "$ref": "#/operations/get_recent_posts/request",
+                            "fuzzing": true
+                        }
+                    ]
+                }
+            ],
+            "request": {
+                "operationId": "get_recent_posts",
+                "auth": [
+                    "bearerAuth"
+                ],
+                "request": {
+                    "type": "42c",
+                    "details": {
+                        "url": "{{host}}/community/api/v2/community/posts/recent",
+                        "method": "GET"
+                    }
+                },
+                "defaultResponse": "200",
+                "responses": {
+                    "200": {
+                        "expectations": {
+                            "httpStatus": 200
+                        }
+                    },
+                    "default": {
+                        "expectations": {
+                            "httpStatus": "default"
+                        }
+                    }
+                }
+            }
+        },
+        "get_report_byID": {
+            "operationId": "get_report_byID",
+            "scenarios": [
+                {
+                    "key": "happy.path",
+                    "fuzzing": true,
+                    "requests": [
+                        {
+                            "$ref": "#/operations/get_report_byID/request",
+                            "fuzzing": true
+                        }
+                    ]
+                }
+            ],
+            "request": {
+                "operationId": "get_report_byID",
+                "auth": [
+                    "bearerAuth"
+                ],
+                "request": {
+                    "type": "42c",
+                    "details": {
+                        "url": "{{host}}/workshop/api/mechanic/mechanic_report",
+                        "method": "GET",
+                        "queries": [
+                            {
+                                "key": "report_id",
+                                "value": 2
+                            }
+                        ]
+                    }
+                },
+                "defaultResponse": "200",
+                "responses": {
+                    "200": {
+                        "expectations": {
+                            "httpStatus": 200
+                        }
+                    }
+                }
+            }
+        },
+        "get_service_requests_for_mechanic": {
+            "operationId": "get_service_requests_for_mechanic",
+            "scenarios": [
+                {
+                    "key": "happy.path",
+                    "fuzzing": true,
+                    "requests": [
+                        {
+                            "$ref": "#/operations/get_service_requests_for_mechanic/request",
+                            "fuzzing": true
+                        }
+                    ]
+                }
+            ],
+            "request": {
+                "operationId": "get_service_requests_for_mechanic",
+                "auth": [
+                    "bearerAuth"
+                ],
+                "request": {
+                    "type": "42c",
+                    "details": {
+                        "url": "{{host}}/workshop/api/mechanic/service_requests",
+                        "method": "GET"
+                    }
+                },
+                "defaultResponse": "200",
+                "responses": {
+                    "200": {
+                        "expectations": {
+                            "httpStatus": 200
+                        }
+                    },
+                    "401": {
+                        "expectations": {
+                            "httpStatus": 401
+                        }
+                    },
+                    "403": {
+                        "expectations": {
+                            "httpStatus": 403
+                        }
+                    }
+                }
+            }
+        },
+        "get_vehicles": {
+            "operationId": "get_vehicles",
+            "scenarios": [
+                {
+                    "key": "happy.path",
+                    "fuzzing": true,
+                    "requests": [
+                        {
+                            "$ref": "#/operations/get_vehicles/request",
+                            "fuzzing": true
+                        }
+                    ]
+                }
+            ],
+            "request": {
+                "operationId": "get_vehicles",
+                "auth": [
+                    "bearerAuth"
+                ],
+                "request": {
+                    "type": "42c",
+                    "details": {
+                        "url": "{{host}}/identity/api/v2/vehicle/vehicles",
+                        "method": "GET"
+                    }
+                },
+                "defaultResponse": "200",
+                "responses": {
+                    "200": {
+                        "expectations": {
+                            "httpStatus": 200
+                        }
+                    },
+                    "500": {
+                        "expectations": {
+                            "httpStatus": 500
+                        }
+                    },
+                    "default": {
+                        "expectations": {
+                            "httpStatus": "default"
+                        }
+                    }
+                }
+            }
+        },
+        "get_workshop_qr_code": {
+            "operationId": "get_workshop_qr_code",
+            "scenarios": [
+                {
+                    "key": "happy.path",
+                    "fuzzing": true,
+                    "requests": [
+                        {
+                            "$ref": "#/operations/get_workshop_qr_code/request",
+                            "fuzzing": true
+                        }
+                    ]
+                }
+            ],
+            "request": {
+                "operationId": "get_workshop_qr_code",
+                "request": {
+                    "type": "42c",
+                    "details": {
+                        "url": "{{host}}/workshop/api/shop/return_qr_code",
+                        "method": "GET"
+                    }
+                },
+                "defaultResponse": "200",
+                "responses": {
+                    "200": {
+                        "expectations": {
+                            "httpStatus": 200
+                        }
+                    }
+                }
+            }
+        },
+        "login": {
+            "operationId": "login",
+            "scenarios": [
+                {
+                    "key": "happy.path",
+                    "fuzzing": true,
+                    "requests": [
+                        {
+                            "$ref": "#/operations/login/request",
+                            "fuzzing": true
+                        }
+                    ]
+                }
+            ],
+            "request": {
+                "operationId": "login",
+                "request": {
+                    "type": "42c",
+                    "details": {
+                        "url": "{{host}}/identity/api/auth/login",
+                        "method": "POST",
+                        "headers": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "requestBody": {
+                            "mode": "json",
+                            "json": {
+                                "email": "scanuser@test.com",
+                                "password": "scanpassword"
+                            }
+                        }
+                    }
+                },
+                "defaultResponse": "200",
+                "responses": {
+                    "200": {
+                        "expectations": {
+                            "httpStatus": 200
+                        }
+                    },
+                    "500": {
+                        "expectations": {
+                            "httpStatus": 500
+                        }
+                    },
+                    "default": {
+                        "expectations": {
+                            "httpStatus": "default"
+                        }
+                    }
+                }
+            }
+        },
+        "login_with_token": {
+            "operationId": "login_with_token",
+            "scenarios": [
+                {
+                    "key": "happy.path",
+                    "fuzzing": true,
+                    "requests": [
+                        {
+                            "$ref": "#/operations/login_with_token/request",
+                            "fuzzing": true
+                        }
+                    ]
+                }
+            ],
+            "request": {
+                "operationId": "login_with_token",
+                "request": {
+                    "type": "42c",
+                    "details": {
+                        "url": "{{host}}/identity/api/auth/v4.0/user/login-with-token",
+                        "method": "POST",
+                        "headers": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "requestBody": {
+                            "mode": "json",
+                            "json": {
+                                "email": "scanuser@test.com",
+                                "token": "hcizhwfbwexdxksugvqfvxthhxucmjtusamcitgfeww"
+                            }
+                        }
+                    }
+                },
+                "defaultResponse": "400",
+                "responses": {
+                    "400": {
+                        "expectations": {
+                            "httpStatus": 400
+                        }
+                    },
+                    "403": {
+                        "expectations": {
+                            "httpStatus": 403
+                        }
+                    }
+                }
+            }
+        },
+        "login_with_token_v2_7": {
+            "operationId": "login_with_token_v2_7",
+            "scenarios": [
+                {
+                    "key": "happy.path",
+                    "fuzzing": true,
+                    "requests": [
+                        {
+                            "$ref": "#/operations/login_with_token_v2_7/request",
+                            "fuzzing": true
+                        }
+                    ]
+                }
+            ],
+            "request": {
+                "operationId": "login_with_token_v2_7",
+                "request": {
+                    "type": "42c",
+                    "details": {
+                        "url": "{{host}}/identity/api/auth/v2.7/user/login-with-token",
+                        "method": "POST",
+                        "headers": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "requestBody": {
+                            "mode": "json",
+                            "json": {
+                                "email": "scanuser@test.com",
+                                "token": "sqdnk"
+                            }
+                        }
+                    }
+                },
+                "defaultResponse": "200",
+                "responses": {
+                    "200": {
+                        "expectations": {
+                            "httpStatus": 200
+                        }
+                    }
+                }
+            }
+        },
+        "mechanic_signup": {
+            "operationId": "mechanic_signup",
+            "scenarios": [
+                {
+                    "key": "happy.path",
+                    "fuzzing": true,
+                    "requests": [
+                        {
+                            "$ref": "#/operations/mechanic_signup/request",
+                            "fuzzing": true
+                        }
+                    ]
+                }
+            ],
+            "request": {
+                "operationId": "mechanic_signup",
+                "request": {
+                    "type": "42c",
+                    "details": {
+                        "url": "{{host}}/workshop/api/mechanic/signup",
+                        "method": "POST",
+                        "headers": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "requestBody": {
+                            "mode": "json",
+                            "json": {
+                                "email": "yGIS6XEV4Hs4VuoQbZuTdb0QbENPF7C7lpiv3VnuEYvJMGCb62TnE@test.com",
+                                "mechanic_code": "TRAC_JHN",
+                                "name": "djzukpqnxlfrpjbfukifopvxrrotpoes",
+                                "number": "4316745371",
+                                "password": "c5rvoz96djs200wxvx26uk6cip4pgy4m5dh9v"
+                            }
+                        }
+                    }
+                },
+                "defaultResponse": "200",
+                "responses": {
+                    "200": {
+                        "expectations": {
+                            "httpStatus": 200
+                        }
+                    },
+                    "400": {
+                        "expectations": {
+                            "httpStatus": 400
+                        }
+                    },
+                    "default": {
+                        "expectations": {
+                            "httpStatus": "default"
+                        }
+                    }
+                }
+            }
+        },
+        "post_comment": {
+            "operationId": "post_comment",
+            "scenarios": [
+                {
+                    "key": "happy.path",
+                    "fuzzing": true,
+                    "requests": [
+                        {
+                            "$ref": "#/operations/post_comment/request",
+                            "fuzzing": true
+                        }
+                    ]
+                }
+            ],
+            "request": {
+                "operationId": "post_comment",
+                "auth": [
+                    "bearerAuth"
+                ],
+                "request": {
+                    "type": "42c",
+                    "details": {
+                        "url": "{{host}}/community/api/v2/community/posts/{postId}/comment",
+                        "method": "POST",
+                        "paths": [
+                            {
+                                "key": "postId",
+                                "value": "pFUVKPPQMZD24FoimiqL8g"
+                            }
+                        ],
+                        "headers": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "requestBody": {
+                            "mode": "json",
+                            "json": {
+                                "content": "Porro aut ratione et."
+                            }
+                        }
+                    }
+                },
+                "defaultResponse": "200",
+                "responses": {
+                    "200": {
+                        "expectations": {
+                            "httpStatus": 200
+                        }
+                    },
+                    "default": {
+                        "expectations": {
+                            "httpStatus": "default"
+                        }
+                    }
+                }
+            }
+        },
+        "reset_password": {
+            "operationId": "reset_password",
+            "scenarios": [
+                {
+                    "key": "happy.path",
+                    "fuzzing": true,
+                    "requests": [
+                        {
+                            "$ref": "#/operations/reset_password/request",
+                            "fuzzing": true
+                        }
+                    ]
+                }
+            ],
+            "request": {
+                "operationId": "reset_password",
+                "auth": [
+                    "bearerAuth"
+                ],
+                "request": {
+                    "type": "42c",
+                    "details": {
+                        "url": "{{host}}/identity/api/v2/user/reset-password",
+                        "method": "POST",
+                        "headers": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "requestBody": {
+                            "mode": "json",
+                            "json": {}
+                        }
+                    }
+                },
+                "defaultResponse": "200",
+                "responses": {
+                    "200": {
+                        "expectations": {
+                            "httpStatus": 200
+                        }
+                    },
+                    "500": {
+                        "expectations": {
+                            "httpStatus": 500
+                        }
+                    },
+                    "default": {
+                        "expectations": {
+                            "httpStatus": "default"
+                        }
+                    }
+                }
+            }
+        },
+        "return_order": {
+            "operationId": "return_order",
+            "scenarios": [
+                {
+                    "key": "happy.path",
+                    "fuzzing": true,
+                    "requests": [
+                        {
+                            "$ref": "#/operations/return_order/request",
+                            "fuzzing": true
+                        }
+                    ]
+                }
+            ],
+            "request": {
+                "operationId": "return_order",
+                "auth": [
+                    "bearerAuth"
+                ],
+                "request": {
+                    "type": "42c",
+                    "details": {
+                        "url": "{{host}}/workshop/api/shop/orders/return_order",
+                        "method": "POST",
+                        "queries": [
+                            {
+                                "key": "order_id",
+                                "value": 33
+                            }
+                        ]
+                    }
+                },
+                "defaultResponse": "200",
+                "responses": {
+                    "200": {
+                        "expectations": {
+                            "httpStatus": 200
+                        }
+                    },
+                    "400": {
+                        "expectations": {
+                            "httpStatus": 400
+                        }
+                    },
+                    "403": {
+                        "expectations": {
+                            "httpStatus": 403
+                        }
+                    }
+                }
+            }
+        },
+        "signup": {
+            "operationId": "signup",
+            "scenarios": [
+                {
+                    "key": "happy.path",
+                    "fuzzing": true,
+                    "requests": [
+                        {
+                            "$ref": "#/operations/signup/request",
+                            "fuzzing": true
+                        }
+                    ]
+                }
+            ],
+            "request": {
+                "operationId": "signup",
+                "request": {
+                    "type": "42c",
+                    "details": {
+                        "url": "{{host}}/identity/api/auth/signup",
+                        "method": "POST",
+                        "headers": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "requestBody": {
+                            "mode": "json",
+                            "json": {
+                                "email": "mJkjYrKqqp5DMvGANfaftolDcHHjHo5Ndj8QjhYoqGmO8hbEPCnpvo@test.com",
+                                "name": "Conf Scan User",
+                                "number": "0490528166",
+                                "password": "scanpassword"
+                            }
+                        }
+                    }
+                },
+                "defaultResponse": "200",
+                "responses": {
+                    "200": {
+                        "expectations": {
+                            "httpStatus": 200
+                        }
+                    },
+                    "403": {
+                        "expectations": {
+                            "httpStatus": 403
+                        }
+                    },
+                    "500": {
+                        "expectations": {
+                            "httpStatus": 500
+                        }
+                    },
+                    "default": {
+                        "expectations": {
+                            "httpStatus": "default"
+                        }
+                    }
+                }
+            }
+        },
+        "update_order": {
+            "operationId": "update_order",
+            "scenarios": [
+                {
+                    "key": "happy.path",
+                    "fuzzing": true,
+                    "requests": [
+                        {
+                            "$ref": "#/operations/update_order/request",
+                            "fuzzing": true
+                        }
+                    ]
+                }
+            ],
+            "request": {
+                "operationId": "update_order",
+                "auth": [
+                    "bearerAuth"
+                ],
+                "request": {
+                    "type": "42c",
+                    "details": {
+                        "url": "{{host}}/workshop/api/shop/orders/{order_id}",
+                        "method": "PUT",
+                        "paths": [
+                            {
+                                "key": "order_id",
+                                "value": 4604019762863910729
+                            }
+                        ],
+                        "headers": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "requestBody": {
+                            "mode": "json",
+                            "json": {
+                                "product_id": 1,
+                                "quantity": 1
+                            }
+                        }
+                    }
+                },
+                "defaultResponse": "200",
+                "responses": {
+                    "200": {
+                        "expectations": {
+                            "httpStatus": 200
+                        }
+                    },
+                    "400": {
+                        "expectations": {
+                            "httpStatus": 400
+                        }
+                    },
+                    "403": {
+                        "expectations": {
+                            "httpStatus": 403
+                        }
+                    }
+                }
+            }
+        },
+        "update_profile_pic": {
+            "operationId": "update_profile_pic",
+            "scenarios": [
+                {
+                    "key": "happy.path",
+                    "fuzzing": true,
+                    "requests": [
+                        {
+                            "$ref": "#/operations/update_profile_pic/request",
+                            "fuzzing": true
+                        }
+                    ]
+                }
+            ],
+            "request": {
+                "operationId": "update_profile_pic",
+                "auth": [
+                    "bearerAuth"
+                ],
+                "request": {
+                    "type": "42c",
+                    "details": {
+                        "url": "{{host}}/identity/api/v2/user/pictures",
+                        "method": "POST",
+                        "headers": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "requestBody": {
+                            "mode": "json",
+                            "json": {}
+                        }
+                    }
+                },
+                "defaultResponse": "200",
+                "responses": {
+                    "200": {
+                        "expectations": {
+                            "httpStatus": 200
+                        }
+                    },
+                    "500": {
+                        "expectations": {
+                            "httpStatus": 500
+                        }
+                    }
+                }
+            }
+        },
+        "update_profile_video": {
+            "operationId": "update_profile_video",
+            "scenarios": [
+                {
+                    "key": "happy.path",
+                    "fuzzing": true,
+                    "requests": [
+                        {
+                            "$ref": "#/operations/update_profile_video/request",
+                            "fuzzing": true
+                        }
+                    ]
+                }
+            ],
+            "request": {
+                "operationId": "update_profile_video",
+                "auth": [
+                    "bearerAuth"
+                ],
+                "request": {
+                    "type": "42c",
+                    "details": {
+                        "url": "{{host}}/identity/api/v2/user/videos/{video_id}",
+                        "method": "PUT",
+                        "paths": [
+                            {
+                                "key": "video_id",
+                                "value": 3766980378010794858
+                            }
+                        ],
+                        "headers": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "requestBody": {
+                            "mode": "json",
+                            "json": {}
+                        }
+                    }
+                },
+                "defaultResponse": "200",
+                "responses": {
+                    "200": {
+                        "expectations": {
+                            "httpStatus": 200
+                        }
+                    },
+                    "204": {
+                        "expectations": {
+                            "httpStatus": 204
+                        }
+                    }
+                }
+            }
+        },
+        "upload_profile_video": {
+            "operationId": "upload_profile_video",
+            "scenarios": [
+                {
+                    "key": "happy.path",
+                    "fuzzing": true,
+                    "requests": [
+                        {
+                            "$ref": "#/operations/upload_profile_video/request",
+                            "fuzzing": true
+                        }
+                    ]
+                }
+            ],
+            "request": {
+                "operationId": "upload_profile_video",
+                "auth": [
+                    "bearerAuth"
+                ],
+                "request": {
+                    "type": "42c",
+                    "details": {
+                        "url": "{{host}}/identity/api/v2/user/videos",
+                        "method": "POST",
+                        "headers": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "requestBody": {
+                            "mode": "json",
+                            "json": {
+                                "file": "\u0007\u001f} as\u001f\u0012\u000c=\u0015m\\\u001fPy\u0019\u0005yVX\u00127C\u0008fop\u0003\u0014\u001c\u0003)\u0010\u0008}\u0014;d\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000h-\"\u0010\u0000\u0000\u0000\ufffd\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\ufffd\ufffd\ufffd\u0001\u0001\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\ufffdڧ\u0001\u0001\u0000\u0000\u0000@W!\u0002\u0001\u0000\u0000\u0000\u0001\u0000\u0000\u0000\u0000\u0000\u0000\u00008AP\u0002\u0001\u0000\u0000\u0000"
+                            }
+                        }
+                    }
+                },
+                "defaultResponse": "200",
+                "responses": {
+                    "200": {
+                        "expectations": {
+                            "httpStatus": 200
+                        }
+                    },
+                    "500": {
+                        "expectations": {
+                            "httpStatus": 500
+                        }
+                    }
+                }
+            }
+        },
+        "validate_coupon": {
+            "operationId": "validate_coupon",
+            "scenarios": [
+                {
+                    "key": "happy.path",
+                    "fuzzing": true,
+                    "requests": [
+                        {
+                            "$ref": "#/operations/validate_coupon/request",
+                            "fuzzing": true
+                        }
+                    ]
+                }
+            ],
+            "request": {
+                "operationId": "validate_coupon",
+                "auth": [
+                    "bearerAuth"
+                ],
+                "request": {
+                    "type": "42c",
+                    "details": {
+                        "url": "{{host}}/community/api/v2/coupon/validate-coupon",
+                        "method": "POST",
+                        "headers": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "requestBody": {
+                            "mode": "json",
+                            "json": {
+                                "coupon_code": "TRAC075"
+                            }
+                        }
+                    }
+                },
+                "defaultResponse": "200",
+                "responses": {
+                    "200": {
+                        "expectations": {
+                            "httpStatus": 200
+                        }
+                    },
+                    "500": {
+                        "expectations": {
+                            "httpStatus": 500
+                        }
+                    },
+                    "default": {
+                        "expectations": {
+                            "httpStatus": "default"
+                        }
+                    }
+                }
+            }
+        },
+        "vehicle_resend_email": {
+            "operationId": "vehicle_resend_email",
+            "scenarios": [
+                {
+                    "key": "happy.path",
+                    "fuzzing": true,
+                    "requests": [
+                        {
+                            "$ref": "#/operations/vehicle_resend_email/request",
+                            "fuzzing": true
+                        }
+                    ]
+                }
+            ],
+            "request": {
+                "operationId": "vehicle_resend_email",
+                "auth": [
+                    "bearerAuth"
+                ],
+                "request": {
+                    "type": "42c",
+                    "details": {
+                        "url": "{{host}}/identity/api/v2/vehicle/resend_email",
+                        "method": "POST"
+                    }
+                },
+                "defaultResponse": "200",
+                "responses": {
+                    "200": {
+                        "expectations": {
+                            "httpStatus": 200
+                        }
+                    },
+                    "500": {
+                        "expectations": {
+                            "httpStatus": 500
+                        }
+                    },
+                    "default": {
+                        "expectations": {
+                            "httpStatus": "default"
+                        }
+                    }
+                }
+            }
+        },
+        "verify_email_token": {
+            "operationId": "verify_email_token",
+            "scenarios": [
+                {
+                    "key": "happy.path",
+                    "fuzzing": true,
+                    "requests": [
+                        {
+                            "$ref": "#/operations/verify_email_token/request",
+                            "fuzzing": true
+                        }
+                    ]
+                }
+            ],
+            "request": {
+                "operationId": "verify_email_token",
+                "auth": [
+                    "bearerAuth"
+                ],
+                "request": {
+                    "type": "42c",
+                    "details": {
+                        "url": "{{host}}/identity/api/v2/user/verify-email-token",
+                        "method": "POST",
+                        "headers": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "requestBody": {
+                            "mode": "json",
+                            "json": {
+                                "new_email": "Danielle.Ankunding@example.com",
+                                "old_email": "Einar.Swaniawski@example.com",
+                                "token": "T9O2s6i3C7o2E8l7X5Y4"
+                            }
+                        }
+                    }
+                },
+                "defaultResponse": "200",
+                "responses": {
+                    "200": {
+                        "expectations": {
+                            "httpStatus": 200
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "environments": {
+        "default": {
+            "variables": {
+                "bearerAuth": {
+                    "from": "environment",
+                    "name": "SCAN42C_SECURITY_BEARERAUTH",
+                    "required": true
+                },
+                "bearerAuthAdmin": {
+                    "from": "environment",
+                    "name": "SCAN42C_SECURITY_BEARERAUTHADMIN",
+                    "required": false,
+                    "default": "secret_to_be_overridden"
+                },
+                "host": {
+                    "from": "environment",
+                    "name": "SCAN42C_HOST",
+                    "required": false,
+                    "default": "http://localhost:8888"
+                }
+            }
+        }
+    }
+}

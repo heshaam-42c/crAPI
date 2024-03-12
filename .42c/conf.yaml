@@ -1,0 +1,3 @@
+apis:
+  openapi-spec/openapi-spec-enhanced.json:
+    alias: owasp-crapi-api
