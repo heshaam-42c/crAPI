@@ -3,5 +3,5 @@ audit:
     '*':
       discovery:
         search:
-          - openapi-spec/crAPI-openapi-spec.json
+          - openapi-spec/*.*
 
