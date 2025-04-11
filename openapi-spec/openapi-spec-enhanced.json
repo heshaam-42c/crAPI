@@ -29,11 +29,12 @@
                 "properties" : {
                   "email" : {
                     "type": "string",
-                    "pattern": "^[a-zA-Z0-9]{3,91}@test\\.com$",
-                    "minLength": 3,
-                    "maxLength": 100,
+                    "pattern": "^(?:[\\w\\-+!#$%&'*/=?^`|{}~]+(?:\\.[\\w\\-+!#$%&'*/=?^`|{}~]+)*)@(?:(?:[A-Za-z0-9](?:[\\w\\-]{0,61}[A-Za-z0-9])?)(?:\\.(?:[A-Za-z0-9](?:[\\w\\-]{0,61}[A-Za-z0-9])?))*\\.[A-Za-z]{2,})$",
+                    "minLength": 6,
+                    "maxLength": 320,
                     "format": "o:HA:email",
-                    "x-42c-format": "o:HA:email"
+                    "x-42c-format": "o:HA:email",
+                    "example": "scanuser@test.com"
                   },
                   "name" : {
                     "type" : "string",
@@ -122,9 +123,9 @@
                 "properties" : {
                   "email" : {
                     "type": "string",
-                    "pattern": "^[a-zA-Z0-9]{3,91}@test\\.com$",
-                    "minLength": 3,
-                    "maxLength": 100,
+                    "pattern": "^(?:[\\w\\-+!#$%&'*/=?^`|{}~]+(?:\\.[\\w\\-+!#$%&'*/=?^`|{}~]+)*)@(?:(?:[A-Za-z0-9](?:[\\w\\-]{0,61}[A-Za-z0-9])?)(?:\\.(?:[A-Za-z0-9](?:[\\w\\-]{0,61}[A-Za-z0-9])?))*\\.[A-Za-z]{2,})$",
+                    "minLength": 6,
+                    "maxLength": 320,
                     "format": "o:HA:email",
                     "x-42c-format": "o:HA:email",
                     "example": "scanuser@test.com"
@@ -194,9 +195,9 @@
                 "properties" : {
                   "email" : {
                     "type": "string",
-                    "pattern": "^[a-zA-Z0-9]{3,91}@test\\.com$",
-                    "minLength": 3,
-                    "maxLength": 100,
+                    "pattern": "^(?:[\\w\\-+!#$%&'*/=?^`|{}~]+(?:\\.[\\w\\-+!#$%&'*/=?^`|{}~]+)*)@(?:(?:[A-Za-z0-9](?:[\\w\\-]{0,61}[A-Za-z0-9])?)(?:\\.(?:[A-Za-z0-9](?:[\\w\\-]{0,61}[A-Za-z0-9])?))*\\.[A-Za-z]{2,})$",
+                    "minLength": 6,
+                    "maxLength": 320,
                     "format": "o:HA:email",
                     "x-42c-format": "o:HA:email",
                     "example": "scanuser@test.com"
@@ -400,6 +401,16 @@
                 }
               }
             }
+          },
+          "400" : {
+            "description" : "Email or Password missing",
+            "content" : {
+              "*/*" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/CRAPI400Response"
+                }
+              }
+            }
           }
         }
       }
@@ -424,17 +435,17 @@
                     "type": "string",
                     "format": "o:HA:email",
                     "example": "scanuser@test.com",
-                    "pattern": "^[a-zA-Z0-9]{3,91}@test\\.com$",
-                    "minLength": 3,
-                    "maxLength": 100,
+                    "pattern": "^(?:[\\w\\-+!#$%&'*/=?^`|{}~]+(?:\\.[\\w\\-+!#$%&'*/=?^`|{}~]+)*)@(?:(?:[A-Za-z0-9](?:[\\w\\-]{0,61}[A-Za-z0-9])?)(?:\\.(?:[A-Za-z0-9](?:[\\w\\-]{0,61}[A-Za-z0-9])?))*\\.[A-Za-z]{2,})$",
+                    "minLength": 6,
+                    "maxLength": 320,
                     "x-42c-format": "o:HA:email"
                   },
                   "password" : {
                     "format": "o:HA:password",
                     "type": "string",
-                    "pattern": "^[0-9a-z]{3,300}$",
-                    "minLength": 3,
-                    "maxLength": 300,
+                    "pattern": "^[a-zA-Z0-9&@#!?]{8,64}$",
+                    "minLength": 8,
+                    "maxLength": 64,
                     "example": "scanpassword",
                     "x-42c-format": "o:HA:password"
                   }
@@ -500,18 +511,18 @@
                     "type": "string",
                     "format": "o:HA:email",
                     "example": "Sofia.Predovic@example.com",
-                    "pattern": "^[a-zA-Z0-9]{3,91}@test\\.com$",
-                    "minLength": 3,
-                    "maxLength": 100,
+                    "pattern": "^(?:[\\w\\-+!#$%&'*/=?^`|{}~]+(?:\\.[\\w\\-+!#$%&'*/=?^`|{}~]+)*)@(?:(?:[A-Za-z0-9](?:[\\w\\-]{0,61}[A-Za-z0-9])?)(?:\\.(?:[A-Za-z0-9](?:[\\w\\-]{0,61}[A-Za-z0-9])?))*\\.[A-Za-z]{2,})$",
+                    "minLength": 6,
+                    "maxLength": 320,
                     "x-42c-format": "o:HA:email"
                   },
                   "old_email" : {
                     "type": "string",
                     "format": "o:HA:email",
                     "example": "Cristobal.Weissnat@example.com",
-                    "pattern": "^[a-zA-Z0-9]{3,91}@test\\.com$",
-                    "minLength": 3,
-                    "maxLength": 100,
+                    "pattern": "^(?:[\\w\\-+!#$%&'*/=?^`|{}~]+(?:\\.[\\w\\-+!#$%&'*/=?^`|{}~]+)*)@(?:(?:[A-Za-z0-9](?:[\\w\\-]{0,61}[A-Za-z0-9])?)(?:\\.(?:[A-Za-z0-9](?:[\\w\\-]{0,61}[A-Za-z0-9])?))*\\.[A-Za-z]{2,})$",
+                    "minLength": 6,
+                    "maxLength": 320,
                     "x-42c-format": "o:HA:email"
                   }
                 }
@@ -559,6 +570,7 @@
             "application/json" : {
               "schema" : {
                 "type" : "object",
+                "additionalProperties": false,
                 "required" : [ "old_email", "new_email", "token" ],
                 "properties" : {
                   "old_email" : {
@@ -675,6 +687,7 @@
             "multipart/form-data" : {
               "schema" : {
                 "type" : "object",
+                "additionalProperties": false,
                 "properties" : {
                   "file" : {
                     "type" : "string",
@@ -743,6 +756,7 @@
               "schema" : {
                 "required" : [ "file" ],
                 "type" : "object",
+                "additionalProperties": false,
                 "properties" : {
                   "file" : {
                     "type" : "string",
@@ -814,6 +828,16 @@
           "204" : {
             "description" : "Video not found"
           },
+          "404" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/CRAPIResponse"
+                }
+              }
+            },
+            "description" : "Video not found"
+          },
           "default": {
             "description": "Default",
             "content": {
@@ -874,6 +898,16 @@
               }
             },
             "description" : "Video not found"
+          },
+          "404" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/CRAPIResponse"
+                }
+              }
+            },
+            "description" : "Video not found"
           }
         }
       },
@@ -883,6 +917,8 @@
         "operationId" : "delete_profile_video",
         "tags" : [ "Identity / User" ],
         "security" : [ {
+          "bearerAuthAdmin" : [ ]
+        }, {
           "bearerAuth" : [ ]
         } ],
         "parameters" : [ {
@@ -967,6 +1003,9 @@
         "operationId" : "admin_delete_profile_video",
         "tags" : [ "Identity / Admin" ],
         "security" : [ 
+          {
+            "bearerAuthAdmin" : [ ]
+          },
           {
             "bearerAuth" : [ ]
           }
@@ -1280,9 +1319,13 @@
         "name" : "vehicleId",
         "required" : true,
         "schema" : {
-          "type" : "string",
-          "format" : "uuid",
-          "example": "0be319f0-f0dd-44aa-af0b-af927f3a383f"
+          "type": "string",
+          "format": "uuid",
+          "example": "0be319f0-f0dd-44aa-af0b-af927f3a383f",
+          "pattern": "^[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-[0-9A-Fa-f]{4}-[0-9A-Fa-f]{4}-[0-9A-Fa-f]{12}$",
+          "minLength": 36,
+          "maxLength": 36,
+          "x-42c-format": "o:uuid"
         }
       } ]
     },
@@ -1425,8 +1468,13 @@
                       "additionalProperties": false,
                       "properties" : {
                         "vehicleid" : {
-                          "type" : "string",
-                          "format" : "uuid"
+                          "type": "string",
+                          "format": "uuid",
+                          "example": "a83a29f5-0d63-46f2-8f2e-44c2f1d2e07e",
+                          "pattern": "^[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-[0-9A-Fa-f]{4}-[0-9A-Fa-f]{4}-[0-9A-Fa-f]{12}$",
+                          "minLength": 36,
+                          "maxLength": 36,
+                          "x-42c-format": "o:uuid"
                         },
                         "email" : {
                           "type" : "string"
@@ -1524,8 +1572,13 @@
                       "required" : [ "created_at", "email", "nickname", "profile_pic_url", "vehicleid" ],
                       "properties" : {
                         "vehicleid" : {
-                          "type" : "string",
-                          "format" : "uuid"
+                          "type": "string",
+                          "format": "uuid",
+                          "example": "a83a29f5-0d63-46f2-8f2e-44c2f1d2e07e",
+                          "pattern": "^[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-[0-9A-Fa-f]{4}-[0-9A-Fa-f]{4}-[0-9A-Fa-f]{12}$",
+                          "minLength": 36,
+                          "maxLength": 36,
+                          "x-42c-format": "o:uuid"
                         },
                         "email" : {
                           "type" : "string"
@@ -1570,8 +1623,13 @@
                             "required" : [ "created_at", "email", "nickname", "profile_pic_url", "vehicleid" ],
                             "properties" : {
                               "vehicleid" : {
-                                "type" : "string",
-                                "format" : "uuid"
+                                "type": "string",
+                                "format": "uuid",
+                                "example": "a83a29f5-0d63-46f2-8f2e-44c2f1d2e07e",
+                                "pattern": "^[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-[0-9A-Fa-f]{4}-[0-9A-Fa-f]{4}-[0-9A-Fa-f]{12}$",
+                                "minLength": 36,
+                                "maxLength": 36,
+                                "x-42c-format": "o:uuid"
                               },
                               "email" : {
                                 "type" : "string"
@@ -2338,6 +2396,7 @@
             "application/json" : {
               "schema" : {
                 "type" : "object",
+                "additionalProperties": false,
                 "required" : [ "amount", "coupon_code" ],
                 "properties" : {
                   "amount" : {
@@ -2374,6 +2433,22 @@
             "description" : ""
           },
           "400" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "object",
+                  "required" : [ "message" ],
+                  "properties" : {
+                    "message" : {
+                      "type" : "string"
+                    }
+                  }
+                }
+              }
+            },
+            "description" : ""
+          },
+          "500" : {
             "content" : {
               "application/json" : {
                 "schema" : {
@@ -2999,24 +3074,29 @@
                   "email" : {
                     "type": "string",
                     "format": "o:HA:email",
-                    "pattern": "^[a-zA-Z0-9]{3,91}@test\\.com$",
-                    "minLength": 3,
-                    "maxLength": 100,
-                    "x-42c-format": "o:HA:email"
+                    "pattern": "^(?:[\\w\\-+!#$%&'*/=?^`|{}~]+(?:\\.[\\w\\-+!#$%&'*/=?^`|{}~]+)*)@(?:(?:[A-Za-z0-9](?:[\\w\\-]{0,61}[A-Za-z0-9])?)(?:\\.(?:[A-Za-z0-9](?:[\\w\\-]{0,61}[A-Za-z0-9])?))*\\.[A-Za-z]{2,})$",
+                    "minLength": 6,
+                    "maxLength": 320,
+                    "x-42c-format": "o:HA:email",
+                    "example": "scanuser@test.com"
                   },
                   "number" : {
-                    "type" : "string",
+                    "type": "string",
                     "format": "o:HA:phone",
-                    "minLength": 2,
+                    "minLength": 10,
                     "maxLength": 10,
-                    "pattern": "^[0-9]{10}$"
+                    "pattern": "^[0-9]{10}$",
+                    "example": "6015309132",
+                    "x-42c-format": "o:HA:phone"
                   },
                   "password" : {
-                    "type" : "string",
+                    "type": "string",
                     "format": "o:HA:password",
-                    "pattern": "^[0-9a-z]{3,300}$",
-                    "minLength": 3,
-                    "maxLength": 300
+                    "pattern": "^[a-zA-Z0-9&@#!?]{8,64}$",
+                    "minLength": 8,
+                    "maxLength": 64,
+                    "example": "hellopixi",
+                    "x-42c-format": "o:HA:password"
                   },
                   "mechanic_code" : {
                     "type" : "string",
@@ -3109,8 +3189,13 @@
             "$ref" : "#/components/schemas/OrderStatusEnum"
           },
           "created_on" : {
-            "type" : "string",
-            "format" : "date-time"
+            "type": "string",
+            "format": "date-time",
+            "example": "2021-08-30T23:01:14.274085491+15:55",
+            "pattern": "^[0-9]{4}-(?:0[1-9]|1[0-2])-(?:0[1-9]|[12][0-9]|3[01])T(?:[01][0-9]|2[0-3]):[0-5][0-9]:(?:[0-5][0-9]|60)(?:\\.[0-9]{1,15})?(?:Z|[+\\-](?:[01][0-9]|2[0-3]):[0-5][0-9])$",
+            "minLength": 20,
+            "maxLength": 38,
+            "x-42c-format": "o:date-time"
           }
         },
         "required" : [ "created_on", "id", "product", "user" ]
@@ -3132,6 +3217,7 @@
       },
       "NewProduct" : {
         "type" : "object",
+        "additionalProperties": false,
         "properties" : {
           "name" : {
             "type" : "string"
@@ -3176,6 +3262,7 @@
       },
       "ProductQuantity" : {
         "type" : "object",
+        "additionalProperties": false,
         "properties" : {
           "product_id" : {
             "type" : "integer",
@@ -3220,8 +3307,13 @@
                   "required" : [ "created_at", "email", "nickname", "profile_pic_url", "vehicleid" ],
                   "properties" : {
                     "vehicleid" : {
-                      "type" : "string",
-                      "format" : "uuid"
+                      "type": "string",
+                      "format": "uuid",
+                      "example": "a83a29f5-0d63-46f2-8f2e-44c2f1d2e07e",
+                      "pattern": "^[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-[0-9A-Fa-f]{4}-[0-9A-Fa-f]{4}-[0-9A-Fa-f]{12}$",
+                      "minLength": 36,
+                      "maxLength": 36,
+                      "x-42c-format": "o:uuid"
                     },
                     "email" : {
                       "type" : "string"
@@ -3350,31 +3442,31 @@
             "maxLength" : 4,
             "minLength" : 3,
             "type" : "string",
+            "pattern": "^[0-9]{4}$",
             "example": "9969"
           },
           "password" : {
             "format": "o:HA:password",
-            "maxLength": 300,
-            "minLength": 3,
+            "maxLength": 64,
+            "minLength": 8,
             "type": "string",
             "example": "scanpassword",
-            "pattern": "^[0-9a-z]{3,300}$",
+            "pattern": "^[a-zA-Z0-9&@#!?]{8,64}$",
             "x-42c-format": "o:HA:password"
           },
           "email" : {
             "format": "o:HA:email",
-            "maxLength": 100,
-            "minLength": 3,
+            "maxLength": 320,
+            "minLength": 6,
             "type": "string",
             "example": "scanuser@test.com",
-            "pattern": "^[a-zA-Z0-9]{3,91}@test\\.com$",
+            "pattern": "^(?:[\\w\\-+!#$%&'*/=?^`|{}~]+(?:\\.[\\w\\-+!#$%&'*/=?^`|{}~]+)*)@(?:(?:[A-Za-z0-9](?:[\\w\\-]{0,61}[A-Za-z0-9])?)(?:\\.(?:[A-Za-z0-9](?:[\\w\\-]{0,61}[A-Za-z0-9])?))*\\.[A-Za-z]{2,})$",
             "x-42c-format": "o:HA:email"
           }
         }
       },
       "JwtResponse" : {
         "type" : "object",
-        "additionalProperties": false,
         "properties" : {
           "token" : {
             "type" : "string"
@@ -3389,6 +3481,9 @@
           "role" : {
             "type" : "string",
             "enum" : [ "ROLE_UNDEFINED", "ROLE_USER", "ROLE_MECHANIC", "ROLE_ADMIN" ]
+          },
+          "mfaRequired" : {
+            "type" : "boolean"
           }
         }
       },
@@ -3398,12 +3493,12 @@
         "type" : "object",
         "properties" : {
           "email" : {
-            "maxLength": 100,
-            "minLength": 3,
+            "maxLength": 320,
+            "minLength": 6,
             "type": "string",
             "format": "o:HA:email",
             "example": "scanuser@test.com",
-            "pattern": "^[a-zA-Z0-9]{3,91}@test\\.com$",
+            "pattern": "^(?:[\\w\\-+!#$%&'*/=?^`|{}~]+(?:\\.[\\w\\-+!#$%&'*/=?^`|{}~]+)*)@(?:(?:[A-Za-z0-9](?:[\\w\\-]{0,61}[A-Za-z0-9])?)(?:\\.(?:[A-Za-z0-9](?:[\\w\\-]{0,61}[A-Za-z0-9])?))*\\.[A-Za-z]{2,})$",
             "x-42c-format": "o:HA:email"
           },
           "token" : {
@@ -3456,7 +3551,8 @@
             "example": "2022-07-11T17:22:04.51Z",
             "minLength": 23,
             "maxLength": 23,
-            "x-42c-format": "o:standard:date-time"
+            "x-42c-format": "o:standard:date-time",
+            "pattern": "(\\d{4}-\\d{2}-\\d{2})[A-Z]+(\\d{2}:\\d{2}:\\d{2}).([0-9+-:]+)"
           }
         },
         "required" : [ "amount", "coupon_code" ]
@@ -3536,13 +3632,34 @@
                   "type" : "string"
                 },
                 "created_on" : {
-                  "type" : "string",
-                  "format" : "date-time"
+                  "type": "string",
+                  "format": "date-time",
+                  "example": "2021-08-30T23:01:14.274085491+15:55",
+                  "pattern": "^[0-9]{4}-(?:0[1-9]|1[0-2])-(?:0[1-9]|[12][0-9]|3[01])T(?:[01][0-9]|2[0-3]):[0-5][0-9]:(?:[0-5][0-9]|60)(?:\\.[0-9]{1,15})?(?:Z|[+\\-](?:[01][0-9]|2[0-3]):[0-5][0-9])$",
+                  "minLength": 20,
+                  "maxLength": 38,
+                  "x-42c-format": "o:date-time"
                 }
               }
             }
           }
         }
+      },
+      "CRAPI400Response": {
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string"
+          },
+          "details": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "message",
+          "details"
+        ]
       }
     },
     "securitySchemes" : {
