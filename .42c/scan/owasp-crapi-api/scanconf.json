@@ -2481,23 +2481,6 @@
       ]
     }
   },
-  "before": [
-    {
-      "$ref": "#/operations/signup/request"
-    },
-    {
-      "$ref": "#/operations/signup/request",
-      "environment": {
-        "email": "attackuser@test.com"
-      }
-    },
-    {
-      "$ref": "#/operations/signup/request",
-      "environment": {
-        "email": "dummy@test.com"
-      }
-    }
-  ],
   "authenticationDetails": [
     {
       "bearerAuth": {
