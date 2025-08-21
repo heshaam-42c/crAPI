@@ -917,8 +917,6 @@
         "operationId" : "delete_profile_video",
         "tags" : [ "Identity / User" ],
         "security" : [ {
-          "bearerAuthAdmin" : [ ]
-        }, {
           "bearerAuth" : [ ]
         } ],
         "parameters" : [ {
@@ -1003,9 +1001,6 @@
         "operationId" : "admin_delete_profile_video",
         "tags" : [ "Identity / Admin" ],
         "security" : [ 
-          {
-            "bearerAuthAdmin" : [ ]
-          },
           {
             "bearerAuth" : [ ]
           }
@@ -3664,11 +3659,6 @@
     },
     "securitySchemes" : {
       "bearerAuth" : {
-        "type" : "http",
-        "scheme" : "bearer",
-        "bearerFormat" : "JWT"
-      },
-      "bearerAuthAdmin" : {
         "type" : "http",
         "scheme" : "bearer",
         "bearerFormat" : "JWT"

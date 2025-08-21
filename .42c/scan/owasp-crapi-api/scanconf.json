@@ -290,7 +290,7 @@
       "request": {
         "operationId": "admin_delete_profile_video",
         "auth": [
-          "bearerAuthAdmin"
+          "bearerAuth/adminUser"
         ],
         "request": {
           "type": "42c",
@@ -306,7 +306,7 @@
             ]
           }
         },
-        "defaultResponse": "404",
+        "defaultResponse": "200",
         "responses": {
           "200": {
             "expectations": {
@@ -336,7 +336,19 @@
           "requests": [
             {
               "fuzzing": true,
-              "$ref": "#/operations/admin_delete_profile_video/request"
+              "$ref": "#/operations/admin_delete_profile_video/request",
+              "expectedResponse": "200"
+            }
+          ],
+          "fuzzing": true
+        },
+        {
+          "key": "happy.path",
+          "requests": [
+            {
+              "fuzzing": true,
+              "$ref": "#/operations/admin_delete_profile_video/request",
+              "expectedResponse": "404"
             }
           ],
           "fuzzing": true
@@ -884,7 +896,7 @@
       "request": {
         "operationId": "delete_profile_video",
         "auth": [
-          "bearerAuthAdmin"
+          "bearerAuth/adminUser"
         ],
         "request": {
           "type": "42c",
@@ -2572,16 +2584,9 @@
                 }
               }
             ]
-          }
-        }
-      },
-      "bearerAuthAdmin": {
-        "type": "bearer",
-        "default": "bearerAuthAdmin",
-        "credentials": {
-          "bearerAuthAdmin": {
-            "credential": "{{bearerAuthAdmin}}",
-            "description": "bearerAuthAdmin security",
+          },
+          "adminUser": {
+            "credential": "{{adminUser}}",
             "requests": [
               {
                 "$ref": "#/operations/login/request",
@@ -2595,9 +2600,9 @@
                       "httpStatus": 200
                     },
                     "variableAssignments": {
-                      "bearerAuthAdmin": {
-                        "in": "body",
+                      "adminUser": {
                         "from": "response",
+                        "in": "body",
                         "contentType": "json",
                         "path": {
                           "type": "jsonPointer",
